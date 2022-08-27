@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background: red;
+    color: white;
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 10vh;
+}
+
+.card-header {
+    background: blue;
+    padding: 10px;
+    width: 100%;
+    
+}
+
+.card-container {
+    flex: 1 1;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.cards {
+    width: 30%;
+    height: 40vh;
+    padding: 10px;
+    box-shadow: 3px 0px 3px 3px rgb(187, 184, 184);
+    margin: 0 10px 30px 10px;
+
+} 
