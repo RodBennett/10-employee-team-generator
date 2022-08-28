@@ -1,7 +1,7 @@
-//import manager subclass for testing
+//import manager constructor for testing
 const Manager = require('../lib/manager.js')
 
-//create global variable for to pass arguments into manager subclass parameters
+//create global variable to pass arguments into manager constructor parameters
 const manager = new Manager ("Rod", 15, "test@test.com", 418)
 
 // test for super Employee class parameters

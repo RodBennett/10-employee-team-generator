@@ -1,7 +1,7 @@
-//import intern subclass for testing
+//import intern constructor for testing
 const Intern = require('../lib/intern.js')
 
-//create global variable for to pass arguments into intern subclass parameters
+//create global variable to pass arguments into intern constructor parameters
 const intern = new Intern ("Rod", 15, "test@test.com", "Yale/Jail")
 
 // test for super Employee class parameters

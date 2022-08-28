@@ -1,7 +1,7 @@
-//import Engineer subclass for testing
+//import Engineer constructor for testing
 const Engineer = require('../lib/engineer.js')
 
-//create global variable for to pass arguments into Engineer subclass parameters
+//create global variable to pass arguments into Engineer constructor parameters
 const engineer = new Engineer ("Rod", 15, "test@test.com", "github@github.com")
 
 // test for super Employee class parameters
