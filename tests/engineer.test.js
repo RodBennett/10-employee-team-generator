@@ -13,7 +13,7 @@ describe("Engineer", () => {
       expect(engineer.email).toBe("test@test.com");
     })
   });
-  // test Engineer class methods
+  // test Engineer class
   describe("test to see if we can get the value passed into getGithub method", () => {
     it("should return specified values of methods in the Engineer subclass", () => {
       expect(engineer.getGitHub()).toBe("github@github.com")

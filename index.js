@@ -10,7 +10,6 @@ const generateTeam = require("./src/generateHTML.js")
 const inquirer = require("inquirer")
 const fs = require("fs")
 
-
 //create an empty array to push data answers from user into to create string of all employee's data
 const teamMembers = []
 
@@ -27,21 +26,21 @@ const employeeQuestion = [
             ]
         }
 ]
-// varriable for common questions for all types
+// variable for common questions for all types
 const commonQuestions = [
     {
         type: 'input',
-        message: "What is the employee's name?",
+        message: "What is your employee's name?",
         name: 'name',
     },
     {
         type: "input",
-        message: "What is your the team member's id number?",
+        message: "What is your team member's id number?",
         name: "id",
     },
     {
         type: "input",
-        message: "What is team member's email address?",
+        message: "What is your team member's email address?",
         name: "email",
     },
 ]
@@ -63,12 +62,11 @@ const addEmployee = () => {
         choice()
     } else {
         wholeTeam()
-        console.log('Your team has been created')
     }
 })
 }
 
-// global variable for first question: which employee would you like to create?
+// function to prompt questions and capture data for user
 const choice = () => {
     inquirer.prompt ([
             ...employeeQuestion,
@@ -87,7 +85,6 @@ const choice = () => {
                 .then((data) => {
                     let manager = new Manager (data.name, data.id, data.email, data.office)
                     teamMembers.push(manager)
-                    console.log(manager)
                     addEmployee()
                 });
                     break;
@@ -99,12 +96,10 @@ const choice = () => {
                         message: "What is the engineer's GitHub profile link?",
                         name: 'github'
                     },
-
                 ])
                 .then((data) => {
                     let engineer = new Engineer (data.name, data.id, data.email, data.github)
                     teamMembers.push(engineer)
-                    console.log(engineer)
                     addEmployee()
                 });
                     break;
@@ -120,18 +115,15 @@ const choice = () => {
                 .then((data) => {
                     let intern = new Intern (data.name, data.id, data.email, data.school)
                         teamMembers.push(intern)
-                        console.log(intern)
                         addEmployee()
-                    });  
-                   
+                });  
             }
         }) 
 }
 
 const wholeTeam = () => {
     fs.writeFile('./dist/team.html', generateTeam(teamMembers), (err) =>
-    err ? console.log(err) : console.log('Team created'))
-   console.log (teamMembers)
+    err ? console.log(err) : console.log('Your team roster has been created!'))
 };
 
 choice()

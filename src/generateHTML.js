@@ -1,11 +1,9 @@
 // // // function to create the whole team
 const generateTeam = team => {
-    console.log(team, "Team")
     const htmlSections = [];
 
 // functions to generate HTML sections of employees
     const generateManager = manager => {
-        console.log(manager, "manager")
         let managerSection =
             `<div class="cards">
         <div class="card-header">
@@ -16,13 +14,10 @@ const generateTeam = team => {
             <p>Email: <span><a href="mailto:${manager.email}">${manager.email}</a></span></p>
             <p class="office">Office: ${manager.office}</p>
         </div>`;
-
         htmlSections.push(managerSection)
-        console.log(htmlSections, "Manager")
     };
 
     const generateEngineer = engineer => {
-        console.log(engineer)
         let engineerSection =
             `<div class="cards">
             <div class="card-header">
@@ -34,7 +29,6 @@ const generateTeam = team => {
                 <p>Github: <span><a href="${engineer.github}" target="_blank">${engineer.github}</a></span></p>
             </div>`;
         htmlSections.push(engineerSection)
-        console.log(htmlSections)
     };
 
     const generateIntern = intern => {
@@ -49,7 +43,6 @@ const generateTeam = team => {
                     <p>School: ${intern.school}</p>
                 </div>`;
         htmlSections.push(internSection)
-        console.log(htmlSections)
     };
 
     for (let i = 0; i < team.length; i++) {
@@ -92,6 +85,5 @@ const buildTeamPage = (html) => {
     `;
 
 }
-
 
 module.exports = generateTeam
