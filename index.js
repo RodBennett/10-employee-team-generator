@@ -1,120 +1,132 @@
-// import all classes and constructor files into Index
-const Employee = require("./lib/employee.js")
-//const Manager = require("./lib/manager.js")
+// import all constructor files into Index
+const Manager = require("./lib/manager.js")
 const Engineer = require("./lib/engineer.js")
-//const Intern = require("./lib/intern.js")
+const Intern = require("./lib/intern.js")
+//const generateTeam = require("./utils/generateHTML.js")
 
 // import inquirer, file system and generator HTML
 const inquirer = require("inquirer")
-//const generateHTML = require("./utils/generateHTML.js")
 const fs = require("fs")
 
 
-// global variable for exit program question to be asked at the end of each series
-const exitQuestion = [
-    {
-    type: "list",
-    message: "Would you like to enter another employee?",
-    name: "exit",
-    choices: [
-        "Yes",
-        "No",
-    ]}]
+//create an empty array to push data answers from user into to create string of all employee's data
+const teamMembers = []
 
-// commom questions for the user for all employee types
-const prompts = [
-    
-        {
-            type: "input",
-            message: "What is your team member's name?",
-            name: "name",
-        },
-        {
-            type: "input",
-            message: "What is your the team member's id number?",
-            name: "id",
-        },
-        {
-            type: "input",
-            message: "What is team member's email address?",
-            name: "email",
-        },
-        {
-            type: "list",
-            message: "What is your team member's job title?",
+// variable for common questions for all employee typ
+const employeeQuestion = [
+    {
+        type: "list",
+            message: "Which role would you like to create a roster entry for?",
             name: "role",
             choices: [
             "Manager",
             "Engineer",
-            "Intern"
-        ]}, 
-    ]
+            "Intern",
+            ]
+        }
+]
 
-inquirer.prompt ([
-    ...prompts,
-])
+const commonQuestions = [
+    {
+        type: 'input',
+        message: "What is the employee's name?",
+        name: 'name',
+    },
+    {
+        type: "input",
+        message: "What is your the team member's id number?",
+        name: "id",
+    },
+    {
+        type: "input",
+        message: "What is team member's email address?",
+        name: "email",
+    },
+]
 
-// when user answers last question about which employee type, a special question appears for that particular employee type
-.then((data) => {
-    if(data.role === "Manager") {
-        inquirer.prompt ([
-            {
-                type: "input",
-                message: "What is your manager's office number?",
-                name: "office",
-            },
-                ...exitQuestion,
-        ])
-        .then((data) => {
-            if(data.exit === "Yes") {
-                return inquirer.prompt([
-                    ...prompts,
-                ])
-            } else {
-                console.log("Your roster is done")
-            }
-        })
-    } else if (data.role === "Engineer") {
-        inquirer.prompt ([
-            {
-                type: "input",
-                message: "Please enter your GitHub profile link.",
-                name: "github"
-            },
-                ...exitQuestion,
-      ])
-        .then((data) => {
-            if(data.exit === "Yes") {
-                return inquirer.prompt([
-                    ...prompts,
-                ])
-            } else {
-                console.log("Your roster is done")
-            }
-        })
-    } else if (data.role === "Intern") {
-        inquirer.prompt ([
-            {
-                type: "input",
-                message: "What school is the intern from?",
-                name: "school",
-            },
-                ...exitQuestion,
-        ])
-        .then((data) => {
-            if(data.exit === "Yes") {
-                return inquirer.prompt([
-                    ...prompts,
-                ])
-            } else {
-                console.log("Your roster is done")
-            }
-        })
-    }      
+const addEmployee = () => {
+    inquirer.prompt([
+    {
+        type: 'list',
+        message: "Would you like to add another team member?",
+        name: "add",
+        choices: [
+            "Yes",
+            "No",
+        ]
+    }
+]) .then((data) => {
+    if(data.add === "Yes") {
+        choice()
+    } else {
+        console.log('Your team has been created')
+    }
 })
+}
 
-.then((data) => {
-    const writeToFile = generateHTML(data)
-    fs.writeFile("./dist/index.html", writeToFile, (err) =>
-    err ? console.log(err) : console.log("Successfully created Employee Roster."))
-}) 
+// global variable for first question: which employee would you like to create?
+const choice = () => {
+    inquirer.prompt ([
+            ...employeeQuestion,
+        ])
+        .then((data) => {
+            switch (data.role) {
+                case "Manager" :
+                inquirer.prompt ([
+                    ...commonQuestions,
+                    {
+                        type: "input",
+                        message: "What is your manager's office number?",
+                        name: "office",
+                    },
+                ])
+                .then((data) => {
+                    let manager = new Manager (data.name, data.id, data.email, data.office)
+                    teamMembers.push(manager)
+                    console.log(manager)
+                    addEmployee()
+                });
+                    break;
+                case "Engineer" : 
+                inquirer.prompt([
+                    ...commonQuestions,
+                    {
+                        type: 'input',
+                        message: "What is the engineer's GitHub profile link?",
+                        name: 'github'
+                    },
+
+                ])
+                .then((data) => {
+                    let engineer = new Engineer (data.name, data.id, data.email, data.github)
+                    teamMembers.push(engineer)
+                    console.log(engineer)
+                    addEmployee()
+                });
+                    break;
+                case "Intern" : 
+                inquirer.prompt([
+                    ...commonQuestions,
+                    {
+                        type: 'input',
+                        message: "What school is the intern from?",
+                        name: 'school',
+                    },
+                ])
+                .then((data) => {
+                    let intern = new Intern (data.name, data.id, data.email, data.school)
+                        teamMembers.push(intern)
+                        console.log(intern)
+                        addEmployee()
+                    });  
+                   
+        }
+    }) .then((teamMembers) => {
+        // let wholeTeam = generateTeam(teamMembers);
+        // fs.writeFile('./dist/team.html', wholeTeam, (err) =>
+        // err ? console.log(err) : console.log('Team created'))
+       // console.log (teamMembers)
+    })
+}
+
+choice()
