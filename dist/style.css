@@ -8,6 +8,17 @@ header {
     font-style: italic;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     height: 10vh;
+    text-align: center;
+}
+
+h1 {
+    padding: 10px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .card-header {
@@ -15,32 +26,24 @@ header {
     padding: 10px;
     width: 100%;
     margin: auto;
-    
 }
 
-.card-container {
-    flex: 1 1;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
 .cards {
     width: 30%;
     height: 50vh;
     padding: 10px;
     box-shadow: 3px 0px 3px 3px rgb(187, 184, 184);
-    margin: 0 10px 30px 10px;
-
+    margin:  10px 10px 10px 20px;
+    border-radius: 5px;
 } 
  p {
-    border: solid rgb(209, 201, 201);
+    border: 1px solid blue;
     padding: 5px;
     height: 40px
  }
 
  i {
     color: white;
-    
  }
  
  h2 {

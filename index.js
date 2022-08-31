@@ -2,7 +2,9 @@
 const Manager = require("./lib/manager.js")
 const Engineer = require("./lib/engineer.js")
 const Intern = require("./lib/intern.js")
-//const generateTeam = require("./utils/generateHTML.js")
+
+//import html generator
+const generateTeam = require("./src/generateHTML.js")
 
 // import inquirer, file system and generator HTML
 const inquirer = require("inquirer")
@@ -12,7 +14,7 @@ const fs = require("fs")
 //create an empty array to push data answers from user into to create string of all employee's data
 const teamMembers = []
 
-// variable for common questions for all employee typ
+// variable for employee menu
 const employeeQuestion = [
     {
         type: "list",
@@ -25,7 +27,7 @@ const employeeQuestion = [
             ]
         }
 ]
-
+// varriable for common questions for all types
 const commonQuestions = [
     {
         type: 'input',
@@ -44,6 +46,7 @@ const commonQuestions = [
     },
 ]
 
+// function to ask user to add new employee or exit
 const addEmployee = () => {
     inquirer.prompt([
     {
@@ -59,6 +62,7 @@ const addEmployee = () => {
     if(data.add === "Yes") {
         choice()
     } else {
+        wholeTeam()
         console.log('Your team has been created')
     }
 })
@@ -120,13 +124,14 @@ const choice = () => {
                         addEmployee()
                     });  
                    
-        }
-    }) .then((teamMembers) => {
-        // let wholeTeam = generateTeam(teamMembers);
-        // fs.writeFile('./dist/team.html', wholeTeam, (err) =>
-        // err ? console.log(err) : console.log('Team created'))
-       // console.log (teamMembers)
-    })
+            }
+        }) 
 }
+
+const wholeTeam = () => {
+    fs.writeFile('./dist/team.html', generateTeam(teamMembers), (err) =>
+    err ? console.log(err) : console.log('Team created'))
+   console.log (teamMembers)
+};
 
 choice()
