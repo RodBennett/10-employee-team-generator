@@ -3,14 +3,14 @@ const Manager = require("./lib/manager.js")
 const Engineer = require("./lib/engineer.js")
 const Intern = require("./lib/intern.js")
 
-//import html generator
+// import generateTeam function from generateHTML js page
 const generateTeam = require("./src/generateHTML.js")
 
 // import inquirer, file system and generator HTML
 const inquirer = require("inquirer")
 const fs = require("fs")
 
-//create an empty array to push data answers from user into to create string of all employee's data
+// create an empty array to push data answers from user into to create string of all employee's data
 const teamMembers = []
 
 // variable for employee menu
