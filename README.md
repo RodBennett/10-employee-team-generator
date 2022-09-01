@@ -1,6 +1,6 @@
 # Employee Team Builder App
 
-### Note: completed html file can be found in dist folder.
+### **Note: completed html file can be found in dist folder.**
 
 ## Introduction
 
