@@ -1,5 +1,7 @@
 # Employee Team Builder App
 
+### Note: completed html file can be found in dist folder.
+
 ## Introduction
 
 For this assignment, I created an Employee team roster through the command line with the npm inquirer package. Also, used npm package Jest for testing the constructor classes.
