@@ -13,7 +13,7 @@ const generateTeam = team => {
             <p class="id">ID: ${manager.id}</p>
             <p>Email: <span><a href="mailto:${manager.email}">${manager.email}</a></span></p>
             <p class="office">Office: ${manager.office}</p>
-        </div>`;
+        </div>`
         htmlSections.push(managerSection)
     };
 
@@ -27,7 +27,7 @@ const generateTeam = team => {
                 <p>ID: ${engineer.id}</p>
                 <p>Email: <span><a href="mailto:${engineer.email}">${engineer.email}</a></span></p>
                 <p>Github: <span><a href="${engineer.github}" target="_blank">${engineer.github}</a></span></p>
-            </div>`;
+            </div>`
         htmlSections.push(engineerSection)
     };
 
@@ -41,7 +41,7 @@ const generateTeam = team => {
                     <p>ID: ${intern.id}</p>
                     <p>Email: <span><a href="mailto:${intern.email}">${intern.email}</a></span></p>
                     <p>School: ${intern.school}</p>
-                </div>`;
+                </div>`
         htmlSections.push(internSection)
     };
 
@@ -56,7 +56,8 @@ const generateTeam = team => {
     }
     return buildTeamPage(htmlSections)
 }
-//module.exports = team => 
+
+// function to pass all htmlSections into pre-stylied html page
 const buildTeamPage = (html) => {
 
     return `<!DOCTYPE html>
@@ -83,7 +84,7 @@ const buildTeamPage = (html) => {
     </body>
     </html> 
     `;
-
 }
 
+// exporting file to index.js
 module.exports = generateTeam

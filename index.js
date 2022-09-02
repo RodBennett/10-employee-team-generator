@@ -121,9 +121,11 @@ const choice = () => {
         }) 
 }
 
+// function to send all collected data to the generateTeam function on the generateHTML file
 const wholeTeam = () => {
     fs.writeFile('./dist/team.html', generateTeam(teamMembers), (err) =>
     err ? console.log(err) : console.log('Your team roster has been created!'))
 };
 
+// call for the choice function to prompt questions 
 choice()

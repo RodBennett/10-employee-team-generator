@@ -13,7 +13,7 @@ describe("Manager", () => {
       expect(manager.email).toBe("test@test.com");
     })
   });
-  // test manager class methods
+  // test for manager class methods
   describe("test to see if we can get the value passed into getOffice method", () => {
     it("should return specified values of methods in the manager subclass", () => {
       expect(manager.getOffice()).toBe(418)

@@ -13,7 +13,7 @@ describe("Intern", () => {
       expect(intern.email).toBe("test@test.com");
     })
   });
-  // test intern class methods
+  // test for intern class methods
   describe("test to see if we can get the value passed into getSchool method", () => {
     it("should return specified values of methods in the intern subclass", () => {
       expect(intern.getSchool()).toBe("Yale/Jail")
