@@ -15,7 +15,8 @@ For this assignment, I created an Employee team roster through the command line 
 After answering a series of questions in the command line, the data will be pushed to a pre-styled HTML page with boxes for different employee types: Manager, Engineer and Intern.
 
 
-<img width="1153" alt="Screen Shot 2022-08-31 at 6 44 57 PM" src="https://user-images.githubusercontent.com/106923428/187809049-81843e43-e83a-4a8e-b713-b489df619d68.png">
+<img width="1190" alt="Screen Shot 2022-09-30 at 12 48 29 AM" src="https://user-images.githubusercontent.com/106923428/193208388-141f47b6-60aa-4b93-8683-ed64822341b1.png">
+
 
 
 As you can see, each employee type has slightly different data on it, for example office number, github repo, and school.
