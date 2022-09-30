@@ -80,7 +80,7 @@ const buildTeamPage = (html) => {
         <h1>My Team</h1>
     </header>
     <body>
-        <section>  ${html}  </section>
+        <section>  ${html.join('')}  </section>
     </body>
     </html> 
     `;
